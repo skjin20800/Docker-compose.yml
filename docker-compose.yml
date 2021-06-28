@@ -13,7 +13,7 @@ services:
     networks:
       - test_net # 커스텀 네트워크 사용
   frontend:
-    image: skjin20800/basicnginx:react1.0
+    image: skjin20800/basicnginx:front1.1
     # build: ./frontend
     hostname: frontendhost
     depends_on:
@@ -35,17 +35,17 @@ services:
       - database
     networks:
       - test_net # 커스텀 네트워크 사용
-  nginx:
-    image: skjin20800/basicnginx:nginx1.0
-    # build: ./nginx
-    hostname: nginxhost
-    ports:
-      - "80:80"
-    networks:
-      - test_net # 커스텀 네트워크 사용
-    depends_on:
-      - backend
-      - frontend
+  # nginx:
+  #   image: skjin20800/basicnginx:nginx1.0
+  #   # build: ./nginx
+  #   hostname: nginxhost
+  #   ports:
+  #     - "80:80"
+  #   networks:
+  #     - test_net # 커스텀 네트워크 사용
+  #   depends_on:
+  #     - backend
+  #     - frontend
 
 networks:
   test_net: # 내가 만든 커스텀 네트워크명
