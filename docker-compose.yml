@@ -37,7 +37,7 @@ services:
       - test_net # 커스텀 네트워크 사용
   nginx:
     image: skjin20800/basicnginx:nginx1.0
-    build: ./nginx
+    # build: ./nginx
     hostname: nginxhost
     ports:
       - "80:80"
