@@ -24,30 +24,30 @@ services:
     networks:
       - test_net # 커스텀 네트워크 사용
   frontend:
-    # hostname: frontendhost
-    image: skjin20800/basicnginx:react2.2
-    build: ./frontend
-    volumes:
-      - frontend-volume:/app/build
+    hostname: frontendhost
+    image: skjin20800/basicnginx:react2.3
+    # build: ./frontend
+    # volumes:
+    #   - frontend-volume:/app/build
     depends_on:
       - backend
-    # ports:
-    # - "3000:3000"
+    ports:
+      - "3000:3000"
     # 연결할 외부 디렉토리 : 컨테이너 내 디렉토리
     networks:
       - test_net # 커스텀 네트워크 사용
-  nginx:
-    image: skjin20800/basicnginx:nginx2.1
-    # build: ./nginx
-    hostname: nginxhost
-    volumes:
-      - frontend-volume:/app/front
-    ports:
-      - "80:80"
-    networks:
-      - test_net # 커스텀 네트워크 사용
-    depends_on:
-      - frontend
+  # nginx:
+  #   # image: skjin20800/basicnginx:nginx2.0
+  #   build: ./nginx
+  #   hostname: nginxhost
+  #   volumes:
+  #     - frontend-volume:/app/front
+  #   ports:
+  #     - "80:80"
+  #   networks:
+  #     - test_net # 커스텀 네트워크 사용
+  #   depends_on:
+  #     - frontend
 
 networks:
   test_net: # 내가 만든 커스텀 네트워크명
